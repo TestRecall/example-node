@@ -6,6 +6,10 @@
   "scripts": {
     "test": "jest --ci --reporters=default --reporters=jest-junit"
   },
+  "jest-junit": {
+    "suiteName": "example jest tests",
+    "outputName": "report.xml"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
