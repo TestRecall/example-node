@@ -20,9 +20,10 @@ jobs:
 
       - name: Test
         run: |
+          npm install
+
           curl -o reporter https://get.testrecall.com/r/latest/reporter.linux-amd64
           chmod +x reporter
-
           trap './reporter -file report.xml' EXIT
 
           npm run test
