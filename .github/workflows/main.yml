@@ -18,10 +18,10 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v1.4.2
 
+      - run: npm install
+
       - name: Test
         run: |
-          npm install
-
           curl -o reporter https://get.testrecall.com/r/latest/reporter.linux-amd64
           chmod +x reporter
           trap './reporter' EXIT
