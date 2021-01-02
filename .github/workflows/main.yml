@@ -25,8 +25,7 @@ jobs:
 
       - name: Test
         run: |
-          curl -o reporter https://get.testrecall.com/r/latest/reporter.linux-amd64
-          chmod +x reporter
-          trap './reporter' EXIT
+          curl -sL https://get.testrecall.com/reporter | bash
+          trap 'testrecall-reporter' EXIT
 
           npm run test
