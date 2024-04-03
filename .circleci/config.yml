@@ -15,7 +15,7 @@ jobs:
             env
 
             curl -sL https://get.testrecall.com/reporter | bash
-            trap 'testrecall-reporter' EXIT
+            trap 'testrecall-reporter --debug' EXIT
 
             TESTS=$(circleci tests glob "*test.js")
             echo "$TESTS" | circleci tests run --command="xargs npm run test" --split-by=timings
