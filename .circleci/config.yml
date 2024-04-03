@@ -17,15 +17,15 @@ jobs:
             curl -sL https://get.testrecall.com/reporter | bash
             trap 'testrecall-reporter' EXIT
 
-            TEST=$(circleci tests glob "src/__tests__/*.js")
-            echo "$TEST" | circleci tests run --command="xargs npm run test" --split-by=timings
+            TESTS=$(circleci tests glob "*test.js")
+            echo "$TESTS" | circleci tests run --command="xargs npm run test" --split-by=timings
       - run:
-          command: cp junit.xml ~/junit/
+          command: cp report.xml ~/junit/
           when: always
       - store_test_results:
           path: ~/junit
 
 workflows:
-  test_my_app:
+  build_and_test:
     jobs:
       - build_and_test
