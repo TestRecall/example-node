@@ -20,7 +20,9 @@ jobs:
             TESTS=$(circleci tests glob "*test.js")
             echo "$TESTS" | circleci tests run --command="xargs npm run test" --split-by=timings
       - run:
-          command: cp report.xml ~/junit/
+          command: |
+            mkdir -p ~/junit
+            cp report.xml ~/junit/
           when: always
       - store_test_results:
           path: ~/junit
